@@ -72,7 +72,7 @@ This README is missing documentation of your endpoints. Below is an example for 
 
 Endpoints
 GET '/categories'
-GET ...
+GET '/questions'
 POST ...
 DELETE ...
 
@@ -88,6 +88,99 @@ GET '/categories'
 '6' : "Sports"}
 
 ```
+GET '/questions'
+- Fetches a list of questions in which formated well and paginated
+- Request Arguments: page: page_number
+- Returns: Alist of formated question according to the current page param 
+[
+   {
+      "id":1,
+      "question":"Q1",
+      "answer":"A1",
+      "category":"1",
+      "difficulty":1
+   },
+   {
+      "id":2,
+      "question":"Q2",
+      "answer":"A2",
+      "category":"2",
+      "difficulty":2
+   }
+]
+```
+DELETE '/categories/category_id/questions'
+- Fetches The formated question of category which has id = category_id
+- Request Arguments: category_id
+- Returns: Alist of formated question according to the current category_id param 
+[
+   {
+      "id":1,
+      "question":"Q1",
+      "answer":"A1",
+      "category":"1",
+      "difficulty":1
+   },
+   {
+      "id":2,
+      "question":"Q2",
+      "answer":"A2",
+      "category":"2",
+      "difficulty":2
+   }
+]
+```
+DELETE '/questions/question_id'
+- Deletes The question which has id = question_id
+- Request Arguments: question_id
+- Returns: The deleted question id in case of successful processing  
+{
+   "success":true,
+   "deleted_question_id":1
+}
+```
+POST '/questions'
+- Fetches the questions contains searchTerm string and posting a new question if searchTerm is not none
+- Posting  a new question if question, answer, difficulty, category is not none
+- Request Arguments: searchTerm, question, answer, difficulty, category
+- Returns: Alist of formated question contains searchTerm in case of searchTerm is not none
+    [
+   {
+      "id":1,
+      "question":"Q1",
+      "answer":"A1",
+      "category":"1",
+      "difficulty":1
+   },
+   {
+      "id":2,
+      "question":"Q2",
+      "answer":"A2",
+      "category":"2",
+      "difficulty":2
+   }
+]
+- Returns: A new inserted question in case of question, answer, difficulty, category is not none
+{
+    "id":1,
+    "question":"Q1",
+    "answer":"A1",
+    "category":"1",
+    "difficulty":1
+}
+
+```
+POST '/quizzes'
+- Fetches A formated random question for specific quiz_category which not in previous_questions list
+- Request Arguments: previous_questions, quiz_category 
+- Returns: A formated random question for specific quiz_category
+{
+    "id":1,
+    "question":"Q1",
+    "answer":"A1",
+    "category":"1",
+    "difficulty":1
+}
 
 
 ## Testing
